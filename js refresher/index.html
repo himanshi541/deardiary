@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      let a = "hello";
+      //   console.log(a);
+      document.addEventListener("click", function click() {
+        // console.log("clicked");
+        let conf = confirm("u sure!");
+        // console.log(conf);
+      });
+      let arr = [34, 21, 23];
+      console.log(this);
+      let mobj = {
+        a: this,
+        myfunc: function (number) {
+          console.log("the number is " + this);
+        },
+      };
+      mobj.myfunc();
+      console.log(mobj.a);
+    </script>
+  </head>
+  <body>
+    <h1>I am learning Javasript</h1>
+  </body>
+</html>
