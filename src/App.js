@@ -7,14 +7,7 @@ import Textform from "./Components/Textform";
 import About from "./Components/About";
 import React, { useState } from "react";
 // import { Route } from "react-router-dom";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Switch,
-  Link,
-  RouterProvider,
-} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
   const [mode, setMode] = useState("light");
