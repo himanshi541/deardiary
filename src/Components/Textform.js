@@ -53,13 +53,25 @@ export default function Textform(props) {
             rows="8"
           ></textarea>
         </div>
-        <button className="btn btn-primary mx-4" onClick={handleupClick}>
+        <button
+          disabled={text.length === 0}
+          className="btn btn-primary mx-4 my-2"
+          onClick={handleupClick}
+        >
           Convert to uppercase
         </button>
-        <button className="btn btn-primary mx-4" onClick={handleloClick}>
+        <button
+          disabled={text.length === 0}
+          className="btn btn-primary mx-4 my-2"
+          onClick={handleloClick}
+        >
           Convert to Lowercase
         </button>
-        <button className="btn btn-primary mx-4" onClick={handleclClick}>
+        <button
+          disabled={text.length === 0}
+          className="btn btn-primary mx-4 my-2"
+          onClick={handleclClick}
+        >
           Clear text
         </button>
       </div>
@@ -71,7 +83,12 @@ export default function Textform(props) {
       >
         <h1>Your text summmary</h1>
         <p>
-          {text.split(" ").length} words and {text.length} characters
+          {
+            text.split(/\s+/).filter((element) => {
+              return element.length !== 0;
+            }).length
+          }{" "}
+          words and {text.length} characters
         </p>
         <p>{0.008 * text.split(" ").length} Minutes read</p>
         <h2>Preview</h2>

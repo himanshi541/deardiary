@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /src/
+Disallow: /public/robots.txt
+Disallow: /public/index.html
+Disallow: /public/favicon.ico
+Disallow: /public/manifest.json

@@ -6,14 +6,15 @@ import Navbar from "./Components/Navbar";
 import Textform from "./Components/Textform";
 import About from "./Components/About";
 import React, { useState } from "react";
-// import {
-//   BrowserRouter as Router,
-//   Routes,
-//   Switch,
-//   Route,
-//   Link,
-//   RouterProvider,
-// } from "react-router-dom";
+// import { Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Switch,
+  Link,
+  RouterProvider,
+} from "react-router-dom";
 
 function App() {
   const [mode, setMode] = useState("light");
@@ -28,8 +29,17 @@ function App() {
       setAlert(null);
     }, 1500);
   };
-
-  const toggleMode = () => {
+  const removeBodyClasses = () => {
+    document.body.classList.remove("bg-light");
+    document.body.classList.remove("bg-dark");
+    document.body.classList.remove("bg-success");
+    document.body.classList.remove("bg-danger");
+    document.body.classList.remove("bg-warning");
+    document.body.classList.remove("bg-primary");
+  };
+  const toggleMode = (cls) => {
+    removeBodyClasses();
+    document.body.classList.toggle("bg-" + cls);
     if (mode === "light") {
       setMode("dark");
       document.body.style.backgroundColor = "grey";
@@ -61,26 +71,28 @@ function App() {
     //       Learn React with Himanshi :)
     //     </a>
     <>
-      {/* <Router> */}
-      <Navbar title="Textutils" mode={mode} toggleMode={toggleMode} />
-      <Alert alert={alert} />
-      <div className="container">
-        {/* <Route path="/">
-              <About></About>
+      <Router>
+        <Navbar title="Textutils" mode={mode} toggleMode={toggleMode} />
+        <Alert alert={alert} />
+        <div className="container" my-3>
+          {/* <Route path="/">
+              element{<About></About>}
             </Route> */}
-        {/* <Routes>
+          <Routes>
             <Route
               path="/"
               element={
-              */}
-        <Textform
-          showAlert={showAlert}
-          heading="Enter the text to analyze"
-          mode={mode}
-          // toggleMode={toggleMode}
-        />
-        <About mode={mode} toggleMode={toggleMode} />
-      </div>
+                <Textform
+                  showAlert={showAlert}
+                  heading=" TextUtils-Convert your text here"
+                  mode={mode}
+                />
+              }
+            />
+            <Route path="/about" element={<About></About>} mode={mode}></Route>
+          </Routes>
+        </div>
+      </Router>
     </>
   );
 }
