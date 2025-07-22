@@ -3,6 +3,7 @@ const { body, validationResult } = require("express-validator");
 const notes = express.Router();
 const fetchuser = require("../middleware/fetchuser");
 const Note = require("../modals/Note");
+const router = require("./auth");
 
 //Route 1 to fetch all the notes of the logged in user
 notes.get("/fetchallnotes", fetchuser, async (req, res) => {
@@ -50,4 +51,34 @@ notes.post(
     }
   }
 );
+//Route 3 to update an existing note for the logged in user using put
+notes.put("/updatenote/:id", fetchuser, async (req, res) => {
+  const { title, description, tag } = req.body;
+  //create a new note object
+  const newNote = {};
+  if (title) {
+    newNote.title = title;
+  }
+  if (description) {
+    newNote.description = description;
+  }
+  if (tag) {
+    newNote.tag = tag;
+  }
+
+  //find the note to be updated and update it
+  let note = await Note.findById(req.params.id);
+  if (!note) {
+    res.status(404).send("404,NOT FOUND :(");
+  }
+  if (note.user.toString() !== req.user.id) {
+    return res.status(401).send("Not Allowed *__*");
+  }
+  note = await Note.findByIdAndUpdate(
+    req.params.id,
+    { $set: newNote },
+    { new: true }
+  );
+  res.json({ note });
+});
 module.exports = notes;
