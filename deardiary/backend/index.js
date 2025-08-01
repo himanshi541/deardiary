@@ -3,7 +3,9 @@ const connecttoMongo = require("./db");
 const express = require("express");
 connecttoMongo();
 const app = express();
+const cors = require("cors");
 const port = 5000;
+app.use(cors());
 app.use(express.json());
 //Create a user using POST "/api/auth/" endpoint NO authentication required
 app.get("/", (req, res) => {
