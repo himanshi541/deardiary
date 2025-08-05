@@ -45,10 +45,9 @@ const Notes = () => {
       <AddNote />
 
       <button
-        style={{ display: "none" }}
         ref={ref}
         type="button"
-        className="btn btn-primary"
+        className="btn btn-primary d-none"
         data-toggle="modal"
         data-target="#exampleModalCenter"
       >

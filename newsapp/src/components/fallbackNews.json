@@ -1,0 +1,31 @@
+[
+  {
+    "title": "Offline Mode Activated",
+    "description": "NewsAPI limit reached. Showing demo news.",
+    "url": "#",
+    "urlToImage": "https://via.placeholder.com/400x200",
+    "publishedAt": "2025-08-05"
+  },
+
+{
+  "title": "Demo News Article",
+  "description": "This is a placeholder article to demonstrate the news component when offline mode is activated.",
+  "url": "#",
+  "urlToImage": "https://via.placeholder.com/400x200",
+  "publishedAt": "2025-08-05"
+},
+    {
+        "title": "Sample News Item",
+        "description": "This is a sample news item to show in the fallback news list.",
+        "url": "#",
+        "urlToImage": "https://via.placeholder.com/400x200",
+        "publishedAt": "2025-08-05"
+    },
+    {
+        "title": "Another Sample News Item",
+        "description": "This is another sample news item to show in the fallback news list.",
+        "url": "#",
+        "urlToImage": "https://via.placeholder.com/400x200",
+        "publishedAt": "2025-08-05"
+    }
+]
